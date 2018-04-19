@@ -1,0 +1,192 @@
+html{
+  background: gray url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png");
+  @media @desktop{
+    padding:2em 0;
+  }
+}
+.outer{
+  position:relative;
+  margin:auto;
+  -webkit-animation: turnOn .3s ease-in-out .3s;  
+  animation: turnOn .3s ease-in-out .3s;
+  animation-fill-mode: forwards;
+  opacity:0;
+  height:100%;
+  width:100%;
+  @media @desktop{
+    width:55%;
+  }
+}
+.full-blur{
+  position:absolute;
+  width:100%;
+  overflow:hidden;
+  &::after{
+    content:"";
+    position:absolute;
+    background:url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png");
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width:100%;
+    height:100%;
+    display: block;
+    top:0;
+    left:0;
+  }
+}
+@keyframes turnOn {
+    from {
+      transform:scale(0);
+      opacity:0;
+      .box-shadow(-6px, 3px, 16px, 9px, 0);
+    }
+    to {
+      transform:scale(1);
+      opacity:1;
+      .box-shadow(-6px, 3px, 16px, 9px, .15);
+    }
+}
+
+section{
+  width:100%;
+  padding:1em;
+  box-sizing: border-box;
+  background:fade(#fff, 3);
+  position:relative;
+  z-index:99;
+  .cornerLink{
+    position: absolute;
+    top: 0;
+    width:80px;    
+    height:80px;
+    &.topLeft{
+      left: 0;
+      &::before{
+        top:0;
+        left: 0;
+        border-left-color: #fff;
+        border-top-color: #fff;
+        transform-origin: left top;
+      }
+      &::after{
+        top:3px;
+        left:3px;
+        background-image:url("https://d30y9cdsu7xlg0.cloudfront.net/png/24946-200.png");
+      }
+    }
+    &.topRight{
+      right: 0;
+      &::before{
+        top: 0;
+        right: 0;
+        border-right-color: #3394BB;
+        border-top-color: #3394BB;
+        transform-origin: right top;
+      }
+      &::after{
+        top: 3px;
+        right: 3px;  background-image:url("http://icons.iconarchive.com/icons/danleech/simple/1024/linkedin-icon.png");
+      }
+    }
+    &:hover{
+      &::before{
+        transform:scale(1.2);
+      }
+      &::after{
+        width:25px;
+        height:25px;
+      }
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      border: 25px solid transparent;
+      transform:scale(1);
+      transition:transform .2s ease-in-out;
+    }
+    &::after{
+      content:"";
+      position: absolute;
+      width:22px;    
+      height:22px;
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+      transition:width .2s ease-in-out, height .2s ease-in-out;
+    }
+  }
+  
+
+}
+body{
+  font-size:1em;
+}
+p, h1, h2, h3, li{
+  font-family: 'Exo 2', sans-serif;
+  color:#e5e5e5;
+  text-shadow: 2px 2px #000;
+  line-height:1.4;
+}
+h1{
+  font-size:1.6em;
+  text-align:center;
+  margin-bottom:1.6em;
+}
+h2{
+  font-size:1.4em;
+  text-align:center;
+  margin:1em 0 1.5em 0;
+}
+p{
+  text-align:center;
+  margin-bottom:1em;
+}
+hr{
+  border-color:fade(#fff, 10);
+  margin:1.8em auto;
+  width:60%;
+}
+.text-highlight{
+  padding: 0 3px 3px 3px;
+  margin-left: -3px;
+  margin-right: -3px;
+  border-radius:5px;
+  transition:background 1s ease-in-out;
+  &.blue{ background:fade(blue, 5) }
+  &.hover.blue{ background:fade(blue, 14) }
+  &.red{ background:fade(red, 5) }
+  &.hover.red{ background:fade(red, 14) }
+  &.green{ background:fade(green, 5) }
+  &.hover.green{ background:fade(green, 14) }
+}
+.description{
+  display:flex;
+  flex-wrap: nowrap;
+  p{
+    flex:0 1 auto;
+    padding:0 5%;
+  }
+}
+.skills{
+  display:flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  &>ul{
+    @media @desktop{
+      flex: 0 0 25%;
+    }
+    text-align: center;
+  }
+}
+.text-nowrap{
+  white-space:nowrap;
+}
+
+//Mixins
+.box-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+	-webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	-moz-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	box-shadow:		@x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+//MQ
+@desktop: ~"only screen and (min-width: 768px)";
